@@ -1,7 +1,10 @@
 {
   "name": "snyk-broker",
   "description": "Broker for private communication between internal systems and outside public systems",
-  "main": "lib/index.js",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
   "bin": {
     "snyk-broker": "./cli/index.js",
     "broker": "./cli/index.js"
@@ -10,10 +13,11 @@
     "node": "12"
   },
   "scripts": {
-    "start": "node lib",
-    "dev": "node lib | ./node_modules/.bin/bunyan",
-    "test": "npm run lint && CI=1 tap -R spec test/**/*.test.js --timeout 60",
-    "lint": "eslint -c .eslintrc cli lib test && ./lintVerifier.sh",
+    "build": "tsc",
+    "start": "node dist",
+    "dev": "tsc-watch --project tsconfig.json --onSuccess 'node .' | ./node_modules/.bin/bunyan",
+    "test": "npm run lint && CI=1 tap -R spec test/**/*.test.[tj]s --timeout 60",
+    "lint": "eslint --color --cache '{cli,lib,test}/**/*.{js,ts}'",
     "check-tests": "! grep 'test.only' test/**/*.test.js -n"
   },
   "keywords": [],
@@ -23,13 +27,18 @@
     "test": "test"
   },
   "devDependencies": {
+    "@types/node": "^13.9.1",
+    "@typescript-eslint/eslint-plugin": "^2.24.0",
+    "@typescript-eslint/parser": "^2.24.0",
     "eslint": "^5.16.0",
     "proxyquire": "^1.7.10",
     "require-reload": "^0.2.2",
     "sinon": "^1.17.5",
     "tap": "^12.7.0",
     "tap-only": "0.0.5",
-    "tmp": "0.0.33"
+    "tmp": "0.0.33",
+    "tsc-watch": "^4.2.3",
+    "typescript": "^3.8.3"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -54,6 +63,7 @@
     "request": "^2.88.0",
     "snyk-config": "^2.2.3",
     "then-fs": "^2.0.0",
+    "tslint": "^6.1.0",
     "tunnel": "0.0.6",
     "undefsafe": "^2.0.2",
     "uuid": "^3.3.3"

@@ -1,0 +1,30 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended"],
+  "jsRules": {
+    "quotemark": {
+      "options": "single"
+    },
+    "object-literal-sort-keys": false
+  },
+  "rules": {
+    "interface-name": false,
+    "no-var-requires": false,
+    "quotemark": {
+      "options": "single"
+    },
+    "object-literal-sort-keys": false,
+    "no-shadowed-variable": false,
+    "ordered-imports": false
+  },
+  "rulesDirectory": [],
+  "overrides": [
+    {
+      "//": "in TS, use 'export' instead of Node's 'module.exports'",
+      "files": ["*.ts"],
+      "rules": {
+        "id-blacklist": ["error", "exports"]
+      }
+    }
+  ]
+}
