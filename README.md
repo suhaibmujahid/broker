@@ -289,6 +289,13 @@ To change the location of the systemcheck endpoint, you can specify an alternati
 ENV BROKER_SYSTEMCHECK_PATH /path/to/systemcheck
 ```
 
+#### Logging
+
+By default the log level of the Broker is set to INFO...
+
+At this level all requests via the broker will be logged and show the [...]
+
+If you wish to also log the body of these requests, set the following in your `.env` file: `LOG_ENABLE_BODY=true`
 
 ### Advanced Configuration
 
