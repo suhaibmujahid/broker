@@ -291,11 +291,21 @@ ENV BROKER_SYSTEMCHECK_PATH /path/to/systemcheck
 
 #### Logging
 
-By default the log level of the Broker is set to INFO...
+By default the log level of the Broker is set to INFO. The following settings can be set in your environment variables to alter the logging behaviour.
+
+| Key  | Default | Notes |
+|---|---|---|
+| LOG_LEVEL  | info | Set to "debug" for all logs |
+| LOG_ENABLE_BODY | false |   |
+
+
+, to change this set the following environment variable:
+`LOG_LEVEL=debug`
 
 At this level all requests via the broker will be logged and show the [...]
 
-If you wish to also log the body of these requests, set the following in your `.env` file: `LOG_ENABLE_BODY=true`
+If you wish to also log the body of these requests, set the following in your `.env` file: 
+`LOG_ENABLE_BODY=true`
 
 ### Advanced Configuration
 
